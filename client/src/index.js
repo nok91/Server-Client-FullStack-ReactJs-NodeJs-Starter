@@ -9,11 +9,12 @@ import reducers from './reducers/index';
 import App from './components/App';
 import Welcome from './components/Welcome';
 import Signup from './components/auth/Signup';
-import Feature from './components/Feature';
+import Feature from './components/feature-page/Feature';
 import Signout from './components/auth/Signout';
 import Signin from './components/auth/Signin';
 
 import * as serviceWorker from './serviceWorker';
+import './index.css';
 
 const store = createStore(
     reducers,
