@@ -1,4 +1,4 @@
-# ReduxSimpleStarter
+# Client-ReactJS-Redux-MaterialUI
 
 
 ### Getting Started
@@ -10,7 +10,7 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 
 ```
 > git clone https://github.com/nok91/boilerplate-react-redux-starter.git
-> cd boilerplate-react-redux-starter
+> cd client
 > npm install
 > npm start
 ```

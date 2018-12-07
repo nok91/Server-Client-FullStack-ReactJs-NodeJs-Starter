@@ -11,7 +11,7 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 ```
 > Install MongoDB on your machine https://docs.mongodb.com/manual/administration/install-community/
 > git clone https://github.com/nok91/server-express-mongodb
-> cd boilerplate-react-redux-starter
+> cd server
 > npm install
 > npm run dev
 ```
@@ -21,6 +21,8 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 Click [here](https://github.com/nok91/server-express-mongodb/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
 
 ```
+> Install MongoDB on your machine https://docs.mongodb.com/manual/administration/install-community/
+> cd server
 > npm install
-> npm start
+> npm run dev
 ```
