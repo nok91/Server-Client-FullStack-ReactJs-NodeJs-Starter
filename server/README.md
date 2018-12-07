@@ -9,10 +9,11 @@ There are two methods for getting started with this repo.
 Checkout this repo, install dependencies, then start the gulp process with the following:
 
 ```
+> Install MongoDB on your machine https://docs.mongodb.com/manual/administration/install-community/
 > git clone https://github.com/nok91/server-express-mongodb
 > cd boilerplate-react-redux-starter
 > npm install
-> npm start
+> npm run dev
 ```
 
 
