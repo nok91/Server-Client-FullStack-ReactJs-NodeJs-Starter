@@ -12,6 +12,7 @@ import Signup from './components/auth/Signup';
 import Feature from './components/feature-page/Feature';
 import Signout from './components/auth/Signout';
 import Signin from './components/auth/Signin';
+import AllFiles from './components/all-files/AllFiles';
 
 import * as serviceWorker from './serviceWorker';
 import './index.css';
@@ -33,6 +34,7 @@ ReactDOM.render(
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/features" component={Feature} />
+                <Route path="/folder" component={AllFiles} />
             </App>
         </BrowserRouter>
     </Provider>, 
