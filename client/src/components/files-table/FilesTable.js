@@ -11,7 +11,7 @@ import './FilesTable.css'
 class FilesTable extends Component {
     state = {
         active_row_id: -1,
-        filter_active_id: 0,
+        filter_active_id: -1,
         filter_is_asc: true,
         filter_data: [
             { title: 'Name',  _className: 'fl-item-name' },
@@ -19,33 +19,39 @@ class FilesTable extends Component {
             { title: 'Size', _className: 'fl-item-size' },
         ],
         table_data: [
-            { type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 20 },
+            { type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2 },
             { type: 'folder', name: 'Test Folder 1', updated: 'Mohammed Nokri', size: 40 },
-            { type: 'folder', name: 'Test Folder 5', updated: 'Zorro Neve', size: 20 },
+            { type: 'folder', name: 'Test Folder 5', updated: 'Zorro Neve', size: 30 },
             { type: 'folder', name: 'Test Folder 4', updated: 'Alex Neve', size: 20 },
+            { type: 'folder', name: 'Test Folder 10', updated: 'Carlo Bacchi', size: 20 },
+            { type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60 },
+            { type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29 },
+
         ]
     }
 
     componentDidMount() {
         const { table_data, filter_active_id, filter_data, filter_is_asc } = this.state;
-        this.dynamicSort_helper([...table_data], filter_data[filter_active_id].title.toLowerCase(), filter_is_asc);
+        // this.dynamicSort_helper([...table_data], filter_data[filter_active_id].title.toLowerCase(), filter_is_asc);
     }
 
     onClick_filter_handler = (index) => {
-        const { table_data, filter_active_id, filter_data, filter_is_asc } = this.state;
-
-        this.dynamicSort_helper([...table_data], filter_data[filter_active_id].title.toLowerCase(), !filter_is_asc)
+        const { table_data, filter_active_id, filter_data, filter_is_asc} = this.state;
+        console.log(filter_is_asc, index)
 
         if (this.state.filter_active_id === index) {
             this.setState({
                 filter_is_asc: !filter_is_asc,
+                table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), !filter_is_asc)
             })
         } else {
             this.setState({
                 filter_active_id: index,
                 filter_is_asc: true,
+                table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), true)
             });
         }
+
     }
   
     onClick_handler = (index) => {
@@ -56,22 +62,18 @@ class FilesTable extends Component {
 
     dynamicSort_helper = (_data, nameOfFilter, filter_is_asc) => {
         if (filter_is_asc) {
-            _data.sort((a, b) => {
+            return _data.sort((a, b) => {
                 if (a[nameOfFilter] < b[nameOfFilter]) { return -1; }
                 if (a[nameOfFilter] > b[nameOfFilter]) { return 1; }
                 return 0;
             })
         } else {
-            _data.reverse((a, b) => {
-                if (a[nameOfFilter] < b[nameOfFilter]) { return -1; }
-                if (a[nameOfFilter] > b[nameOfFilter]) { return 1; }
+            return _data.sort((a, b) => {
+                if (a[nameOfFilter] > b[nameOfFilter]) { return -1; }
+                if (a[nameOfFilter] < b[nameOfFilter]) { return 1; }
                 return 0;
             });
         }
-
-        this.setState({
-            table_data: _data
-        });
     }
 
     render() {

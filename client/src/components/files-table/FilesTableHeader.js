@@ -10,7 +10,7 @@ class FilesTableHeader extends Component {
 
         return (
             <Fragment>
-                <li className={`fl-item-wrapper`} >
+                <li className={`fl-item-wrapper noselect`} >
                     <div className="fl-item-row">
                         <div className="fl-item-icon-wrapper " >
                             <div className="fl-item-icon is-image-loaded">
