@@ -1,0 +1,19 @@
+
+
+<svg viewBox="0 0 9 9" width="9" height="9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+    <style>
+        #grid-icon {
+            stroke: #444;
+            stroke-opacity: 1;
+        }
+    </style>
+    <g id="icon-wrapper">
+        <defs>
+            <path d="M1151 143h4v4h-4v-4zm5 0h4v4h-4v-4zm0 5h4v4h-4v-4zm-5 0h4v4h-4v-4z" id="a"></path>
+            <mask id="b" x="0" y="0" width="9" height="9" fill="#fff">
+                <use xlink:href="#a"></use>
+            </mask>
+        </defs>
+        <use id="grid-icon" mask="url(#b)" xlink:href="#a" transform="translate(-1151 -143)" stroke-width="2"  fill="none" fill-rule="evenodd"></use>
+    </g>
+</svg>

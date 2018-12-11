@@ -4,7 +4,7 @@ import folder_icon from '../../media/icons/folder-icon.svg';
 
 class FilesTableRow extends Component {
     render() {
-        const { author, title, type, size, onClick_handler, is_active} = this.props;
+        const { updated, name, type, size, onClick_handler, is_active} = this.props;
         return (
             <Fragment>
                 <li className={`fl-item-wrapper ${is_active && 'active'}`} onClick={onClick_handler}>
@@ -14,11 +14,11 @@ class FilesTableRow extends Component {
                             </div>
                         </div>
                         <div className="fl-item-name">
-                            {title}
+                            {name}
                         </div>
                         <div className="fl-item-resize-handle" />
                         <div className="fl-item-updated">
-                            Today by {author}
+                            Today by {updated}
                         </div>
                         <div className="fl-item-resize-handle" />
                         <div className="fl-item-size">
