@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 
-import FilesTableHeader_filter from './FilesTableHeader_filter';
+import FilesTableHeaderFilter from './FilesTableHeader_filter';
 
 class FilesTableHeader extends Component {
 
@@ -20,7 +20,7 @@ class FilesTableHeader extends Component {
 
                         {filter_data.map((item, index, arr) => {
                             return (
-                                <FilesTableHeader_filter {...item} isActive={filter_active_id === index} filter_is_asc={filter_is_asc} key={index} onClickHandler={() => onClick_handler(index)} isLastChild={(arr.length - 1 === index)} />
+                                <FilesTableHeaderFilter {...item} isActive={filter_active_id === index} filter_is_asc={filter_is_asc} key={index} onClickHandler={() => onClick_handler(index)} isLastChild={(arr.length - 1 === index)} />
                             );
                         })}
                     </div>

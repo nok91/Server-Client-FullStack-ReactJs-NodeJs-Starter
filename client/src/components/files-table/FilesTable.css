@@ -178,6 +178,28 @@
     transition: transform .2s ease-in;
 }
 
+.fl-item-row-actions {
+    padding-right: 8px;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    flex: 0;
+    justify-content: flex-end;
+    min-width: 200px;
+    text-align: right;
+    opacity: 0;
+    bottom: 0;
+    min-width: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.fl-item-wrapper:hover .fl-item-row-actions,
+.fl-item-wrapper.active .fl-item-row-actions {
+    opacity: 1;
+}
+
 .fl-item-filter-link:hover {
     text-decoration: underline;
 }

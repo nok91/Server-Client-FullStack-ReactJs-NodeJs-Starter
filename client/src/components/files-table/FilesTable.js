@@ -26,20 +26,15 @@ class FilesTable extends Component {
             { type: 'folder', name: 'Test Folder 10', updated: 'Carlo Bacchi', size: 20 },
             { type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60 },
             { type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29 },
-
+            { type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29 },
         ]
-    }
-
-    componentDidMount() {
-        const { table_data, filter_active_id, filter_data, filter_is_asc } = this.state;
-        // this.dynamicSort_helper([...table_data], filter_data[filter_active_id].title.toLowerCase(), filter_is_asc);
     }
 
     onClick_filter_handler = (index) => {
         const { table_data, filter_active_id, filter_data, filter_is_asc} = this.state;
         console.log(filter_is_asc, index)
 
-        if (this.state.filter_active_id === index) {
+        if (filter_active_id === index) {
             this.setState({
                 filter_is_asc: !filter_is_asc,
                 table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), !filter_is_asc)
@@ -51,7 +46,6 @@ class FilesTable extends Component {
                 table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), true)
             });
         }
-
     }
   
     onClick_handler = (index) => {
