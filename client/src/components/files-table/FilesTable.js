@@ -31,7 +31,7 @@ class FilesTable extends Component {
             { Id:"87b9a123-0670-4f23-7510-50595d216f47", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60 },
             { Id:"87b9a123-0670-4f23-8460-50595d216f47", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/8"},
             { Id:"87b9a123-0670-4f23-9362-50595d216f47", type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29 },
-            { Id:"87b9a123-0670-4f23-1263-50595d216f47", type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/imageRepo/00002/2dd33726-1b91-44dc-9c3c-32cdb60fb132.jpg", download: "https://dataroom-dev.azurewebsites.net/Library/Download/25"},
+            { Id: "87b9a123-0670-4f23-1263-50595d216f47", type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29, src: "http://static.boxxed.com/boxxed/Media/images/projects/p_12/Preview.jpg", download: "https://dataroom-dev.azurewebsites.net/Library/Download/25"},
             { Id:"87b9a123-0670-4f23-0166-50595d216f47", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/9" },
         ]
     }

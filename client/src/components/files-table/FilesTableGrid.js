@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import folder_icon from '../../media/icons/folder-icon.svg';
-
+import file_txt_icon from '../../media/icons/file-txt-icon.svg';
+import file_pdf_icon from '../../media/icons/file-pdf-icon.svg';
 
 class FilesTableGrid extends Component {
 
@@ -14,6 +15,28 @@ class FilesTableGrid extends Component {
             return this.props.data.filter(el => el.type === 'folder')
         else
             return this.props.data.filter(el => el.type !== 'folder')
+    }
+
+    renderFiles = (_el) => {
+        var file = "";
+
+        switch (_el.type) {
+            case 'image':
+                file = <div className="grid-view-item-thumbnail-image" style={{ backgroundImage: `url(${_el.src})` }}></div>;
+                break;
+            case 'txt':
+                file = <img className="grid-view-item-info-file-icon" src={file_txt_icon} width="32" height="32" />;
+                break;
+            case 'pdf':
+                file = <img className="grid-view-item-info-file-icon" src={file_pdf_icon} width="32" height="32" />;
+                break;
+            default:
+                file = <div className="grid-view-item-thumbnail-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)` }}></div>;
+                break;
+        }
+
+        return file;
+
     }
 
     render() {
@@ -46,7 +69,8 @@ class FilesTableGrid extends Component {
                             return (
                                 <div className={`grid-view-item ${is_active === el.Id ? 'active' : ''}`} key={index} onClick={() => onClick_handler(el.Id)}>
                                     <div className="grid-view-item-thumbnail">
-                                        <div className="grid-view-item-thumbnail-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1476820865390-c52aeebb9891)` }}></div>
+                                        {this.renderFiles(el)}
+                                        
                                     </div>
                                     <div className="grid-view-item-info">
                                         <div className="grid-view-item-info-details">

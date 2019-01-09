@@ -373,3 +373,14 @@
     flex: none;
     margin-right: 10px;
 }
+
+.grid-view-item-info-file-icon {
+    width: 50%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
