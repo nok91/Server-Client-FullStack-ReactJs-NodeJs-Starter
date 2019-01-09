@@ -49,3 +49,14 @@ body {
 .btn:hover {
     border: 1px solid rgba(0, 0, 0, 1);
 }
+
+body,
+body *,
+body :after,
+body :before,
+html,
+html *,
+html :after,
+html :before {
+    box-sizing: border-box !important;
+}
