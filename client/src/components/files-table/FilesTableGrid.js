@@ -46,7 +46,7 @@ class FilesTableGrid extends Component {
                             return (
                                 <div className={`grid-view-item ${is_active === el.Id ? 'active' : ''}`} key={index} onClick={() => onClick_handler(el.Id)}>
                                     <div className="grid-view-item-thumbnail">
-                                        <div className="grid-view-item-thumbnail-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)` }}></div>
+                                        <div className="grid-view-item-thumbnail-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1476820865390-c52aeebb9891)` }}></div>
                                     </div>
                                     <div className="grid-view-item-info">
                                         <div className="grid-view-item-info-details">
