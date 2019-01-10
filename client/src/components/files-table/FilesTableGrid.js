@@ -70,7 +70,6 @@ class FilesTableGrid extends Component {
                                 <div className={`grid-view-item ${is_active === el.Id ? 'active' : ''}`} key={index} onClick={() => onClick_handler(el.Id)}>
                                     <div className="grid-view-item-thumbnail">
                                         {this.renderFiles(el)}
-                                        
                                     </div>
                                     <div className="grid-view-item-info">
                                         <div className="grid-view-item-info-details">

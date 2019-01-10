@@ -5,16 +5,19 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import FilesTableHeaderFilter from './FilesTableHeader_filter';
+import Slider from '@material-ui/lab/Slider';
 
 class FilesTableHeader extends Component {
 
     state = {
         sortby: '',
         open: false,
+        value: 1,
     };
 
+    
+
     handleChange = event => {
-        console.log(event.target.name, event.target.value)
         this.setState({ [event.target.name]: event.target.value });
         this.props.onClick_handler(event.target.value)
     };
@@ -27,9 +30,9 @@ class FilesTableHeader extends Component {
         this.setState({ open: true });
     };
 
-
     render() {
-        const { children, filter_active_id, filter_is_asc, onClick_handler, filter_data, is_view_list} = this.props;
+        const { children, filter_active_id, filter_is_asc, onClick_handler, filter_data, is_view_list, sliderValue, handleChangeSlider} = this.props;
+        const { value } = this.state;
 
         return (
             <Fragment>
@@ -51,7 +54,7 @@ class FilesTableHeader extends Component {
                     </ol>
                 :
 
-                    <form autoComplete="off">
+                    <div className="filter-grid-container">
                         <FormControl style={{ minWidth: 120 }}>
                             <InputLabel htmlFor="demo-controlled-open-select">Sort by</InputLabel>
                             <Select
@@ -74,8 +77,18 @@ class FilesTableHeader extends Component {
                                 })}
                             </Select>
                         </FormControl>
+
+                        <Slider
+                            className="filter-grid-slider"
+                            style= {{maxWidth : 150}}
+                            value={sliderValue}
+                            min={0}
+                            max={4}
+                            step={2}
+                            onChange={handleChangeSlider}
+                        />
     
-                    </form>             
+                    </div>             
                
                 }
 

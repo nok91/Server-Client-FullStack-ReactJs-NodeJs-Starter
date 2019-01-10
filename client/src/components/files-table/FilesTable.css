@@ -402,3 +402,15 @@
 .select-filter:before {
     border-bottom: 0px !important;
 }
+
+.filter-grid-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.filter-grid-slider {
+    margin-right: 50px;
+}
