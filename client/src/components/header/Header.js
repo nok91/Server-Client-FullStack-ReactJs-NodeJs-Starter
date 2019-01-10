@@ -55,7 +55,8 @@ class Header extends Component {
                                 <MenuIcon />
                             </IconButton>
                             <Typography variant="h6" color="inherit" className={classes.grow}>
-                                <Link className="AppBar_Link" to="/">Home</Link>
+                                <Link className="AppBar_Link" to="/">Home </Link> | 
+                                <Link className="AppBar_Link" to="/folder"> Data-room</Link>
                             </Typography>
                             {this.renderLinks()}
                         </Toolbar>
