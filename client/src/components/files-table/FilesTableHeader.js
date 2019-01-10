@@ -1,32 +1,86 @@
 import React, { Component, Fragment } from 'react';
-
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import FilesTableHeaderFilter from './FilesTableHeader_filter';
 
 class FilesTableHeader extends Component {
 
+    state = {
+        sortby: '',
+        open: false,
+    };
+
+    handleChange = event => {
+        console.log(event.target.name, event.target.value)
+        this.setState({ [event.target.name]: event.target.value });
+        this.props.onClick_handler(event.target.value)
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
+
+
     render() {
-        const { children, filter_active_id, filter_is_asc, onClick_handler, filter_data} = this.props;
+        const { children, filter_active_id, filter_is_asc, onClick_handler, filter_data, is_view_list} = this.props;
 
         return (
             <Fragment>
-                <li className={`fl-item-wrapper noselect`} >
-                    <div className="fl-item-row">
-                        <div className="fl-item-icon-wrapper " >
-                            <div className="fl-item-icon is-image-loaded">
-                                &nbsp;
+                {is_view_list ?
+                    <ol className="file_list fl-list-header"  >
+                        <li className={`fl-item-wrapper noselect`} >
+                            <div className="fl-item-row">
+                                <div className="fl-item-icon-wrapper " >
+                                    <div className="fl-item-icon is-image-loaded"> &nbsp; </div>
+                                </div>
+
+                                {filter_data.map((item, index, arr) => {
+                                    return (
+                                        <FilesTableHeaderFilter {...item} isActive={filter_active_id === index} filter_is_asc={filter_is_asc} key={index} onClickHandler={() => onClick_handler(index)} isLastChild={(arr.length - 1 === index)} />
+                                    );
+                                })}
                             </div>
-                        </div>
+                        </li>
+                    </ol>
+                :
 
-                        {filter_data.map((item, index, arr) => {
-                            return (
-                                <FilesTableHeaderFilter {...item} isActive={filter_active_id === index} filter_is_asc={filter_is_asc} key={index} onClickHandler={() => onClick_handler(index)} isLastChild={(arr.length - 1 === index)} />
-                            );
-                        })}
-                    </div>
+                    <form autoComplete="off">
+                        <FormControl style={{ minWidth: 120 }}>
+                            <InputLabel htmlFor="demo-controlled-open-select">Sort by</InputLabel>
+                            <Select
+                                className="select-filter"
+                                open={this.state.open}
+                                onClose={this.handleClose}
+                                onOpen={this.handleOpen}
+                                value={this.state.sortby}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'sortby',
+                                    id: 'demo-controlled-open-select',
+                                }}
+                            >
+                                <MenuItem value=""><em>None</em></MenuItem>
+                                {filter_data.map((item, index, arr) => {
+                                    return (
+                                        <MenuItem value={index} key={index}>{item.title}</MenuItem>
+                                    );
+                                })}
+                            </Select>
+                        </FormControl>
+    
+                    </form>             
+               
+                }
 
-                    {children}
-                </li>
+                {children}
+                
             </Fragment>
         );
     }

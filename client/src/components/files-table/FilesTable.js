@@ -46,11 +46,13 @@ class FilesTable extends Component {
                 table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), !filter_is_asc)
             })
         } else {
-            this.setState({
-                filter_active_id: index,
-                filter_is_asc: true,
-                table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), true)
-            });
+            if (filter_data[index] != undefined) {
+                this.setState({
+                    filter_active_id: index,
+                    filter_is_asc: true,
+                    table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), true)
+                });
+            }
         }
     }
   
@@ -88,14 +90,14 @@ class FilesTable extends Component {
 
         return (
             <Fragment>
-                <ol className="file_list fl-list-header"  >
-                    <FilesTableHeader filter_active_id={this.state.filter_active_id} filter_is_asc={this.state.filter_is_asc} onClick_handler={this.onClick_filter_handler} filter_data={this.state.filter_data}>
-                        <div className="fl-list-header-actions">
-                            <img className={`fl-list-header-actions-icon ${is_view_list ? 'active' : ''}`} src={_listIcon} alt="list view" onClick={() => this.onClick_ChangeView(true)} />
-                            <img className={`fl-list-header-actions-icon ${!is_view_list ? 'active' : ''}`} src={_gridIcon} alt="grid view" onClick={() => this.onClick_ChangeView(false)} />
-                        </div>
-                    </FilesTableHeader>
-                </ol>
+                    <div className="files-filters-header">
+                        <FilesTableHeader filter_active_id={this.state.filter_active_id} filter_is_asc={this.state.filter_is_asc} onClick_handler={this.onClick_filter_handler} filter_data={this.state.filter_data} is_view_list={is_view_list}>
+                            <div className="fl-list-header-actions">
+                                <img className={`fl-list-header-actions-icon ${is_view_list ? 'active' : ''}`} src={_listIcon} alt="list view" onClick={() => this.onClick_ChangeView(true)} />
+                                <img className={`fl-list-header-actions-icon ${!is_view_list ? 'active' : ''}`} src={_gridIcon} alt="grid view" onClick={() => this.onClick_ChangeView(false)} />
+                            </div>
+                        </FilesTableHeader>
+                    </div>
 
                 { is_view_list ?
                         <ol className="file_list" >
