@@ -15,8 +15,6 @@ class FilesTableHeader extends Component {
         value: 1,
     };
 
-    
-
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
         this.props.onClick_handler(event.target.value)
@@ -32,7 +30,7 @@ class FilesTableHeader extends Component {
 
     render() {
         const { children, filter_active_id, filter_is_asc, onClick_handler, filter_data, is_view_list, sliderValue, handleChangeSlider} = this.props;
-        const { value } = this.state;
+        // const { value } = this.state;
 
         return (
             <Fragment>

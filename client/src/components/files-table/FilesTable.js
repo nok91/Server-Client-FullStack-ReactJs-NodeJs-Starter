@@ -14,6 +14,7 @@ class FilesTable extends Component {
     state = {
         active_row_id: -1,
         active_dropdown_id: -1,
+        dropdown_is_open: false,
         is_view_list: false,
         sliderValue: 2,
         filter_active_id: -1,
@@ -37,6 +38,15 @@ class FilesTable extends Component {
         ]
     }
 
+    componentWillUnmount() {
+        if (this.state.active_row_id === this.state.active_dropdown_id) {
+            this.setState({
+                active_dropdown_id: -1
+            })
+        }
+    }
+
+
     onClick_filter_handler = (index) => {
         const { table_data, filter_active_id, filter_data, filter_is_asc} = this.state;
         console.log(filter_is_asc, index)
@@ -47,7 +57,7 @@ class FilesTable extends Component {
                 table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), !filter_is_asc)
             })
         } else {
-            if (filter_data[index] != undefined) {
+            if (filter_data[index] !== undefined) {
                 this.setState({
                     filter_active_id: index,
                     filter_is_asc: true,
@@ -60,7 +70,12 @@ class FilesTable extends Component {
     onClick_handler = (index) => {
         this.setState({
             active_row_id: index,
-            active_dropdown_id: index
+        })
+    }
+
+    onClickDropDown_handler = (index) => {
+        this.setState({
+            dropdown_is_open: !this.state.dropdown_is_open
         })
     }
 
@@ -71,7 +86,6 @@ class FilesTable extends Component {
     }
 
     handleChangeSlider = (event, value) => {
-        console.log(value)
         this.setState({ sliderValue: value });
     };
 
@@ -92,12 +106,12 @@ class FilesTable extends Component {
     }
 
     render() {
-        const { active_row_id, table_data, is_view_list, sliderValue} = this.state;
+        const { active_row_id, table_data, is_view_list, sliderValue, active_dropdown_id} = this.state;
 
         return (
             <Fragment>
                     <div className="files-filters-header">
-                        <FilesTableHeader filter_active_id={this.state.filter_active_id} filter_is_asc={this.state.filter_is_asc} onClick_handler={this.onClick_filter_handler} filter_data={this.state.filter_data} is_view_list={is_view_list} handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue}>
+                    <FilesTableHeader filter_active_id={this.state.filter_active_id} filter_is_asc={this.state.filter_is_asc} onClick_handler={this.onClick_filter_handler} filter_data={this.state.filter_data} is_view_list={is_view_list} handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue} active_dropdown_id={active_dropdown_id}>
                             <div className="fl-list-header-actions">
                                 <img className={`fl-list-header-actions-icon ${is_view_list ? 'active' : ''}`} src={_listIcon} alt="list view" onClick={() => this.onClick_ChangeView(true)} />
                                 <img className={`fl-list-header-actions-icon ${!is_view_list ? 'active' : ''}`} src={_gridIcon} alt="grid view" onClick={() => this.onClick_ChangeView(false)} />
@@ -109,13 +123,13 @@ class FilesTable extends Component {
                         <ol className="file_list" >
                             {table_data.map((row, index) => {
                                 return (
-                                    <FilesTableRow {...row} key={index} is_active={active_row_id === row.Id ? true : false} onClick_handler={() => this.onClick_handler(row.Id)}  />
+                                    <FilesTableRow {...row} key={index} is_active={active_row_id === row.Id ? true : false} onClick_handler={() => this.onClick_handler(row.Id)} onClickDropDown_handler={() => this.onClickDropDown_handler(row.Id)} dropdown_is_open={this.state.dropdown_is_open}  />
                                 );
                             })}
                         </ol>
                     :
                     <div className={`grid-view-content grid-size-${sliderValue+1} `}>
-                        <FilesTableGrid data={table_data} is_active={active_row_id} onClick_handler={(_index) => this.onClick_handler(_index)}  />
+                        <FilesTableGrid data={table_data} is_active={active_row_id} onClick_handler={(_index) => this.onClick_handler(_index)} onClickDropDown_handler={(_index) => this.onClickDropDown_handler(_index)} dropdown_is_open={this.state.dropdown_is_open}  />
                     </div>
                 }
                

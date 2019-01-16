@@ -4,38 +4,13 @@ import file_image_icon from '../../media/icons/file-image-icon.svg';
 import file_txt_icon from '../../media/icons/file-txt-icon.svg';
 import file_pdf_icon from '../../media/icons/file-pdf-icon.svg';
 // import file_loader from '../../media/icons/file-loader.svg'
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
+import FilesDropDown from './FilesDropDown';
 
 class FilesTableRow extends Component {
-    state = {
-        dropdown_is_open: false
-    }
-
-    componentWillUpdate() {
-        console.log("here")
-        if( this.state.dropdown_is_open === true) {
-            // this.setState({
-            //     dropdown_is_open: false
-            // });
-        }
-        // this.setState({
-        //     dropdown_is_open: false
-        // });
-    }
-
-    componentWillUnmount(){
-        console.log("componentWillUnmount")
-    }
-
-    onClick_dropdown_Handler = () => {
-        this.setState({
-            dropdown_is_open: !this.state.dropdown_is_open
-        })
-    }
 
     render() {
-        const { updated, name, size, onClick_handler, is_active, type} = this.props;
-        const { dropdown_is_open } = this.state;
+        const { updated, name, size, onClick_handler, is_active, type, active_dropdown_id, onClickDropDown_handler, dropdown_is_open} = this.props;
         var icon = folder_icon;
 
         switch (type) {
@@ -72,19 +47,11 @@ class FilesTableRow extends Component {
                             {size} Files
                         </div>
                         <div className="fl-item-row-actions">
-                            <button className="btn file-list-item-context-menu" aria-haspopup="true" aria-expanded="false" data-type="context-menu-btn" data-tooltip="" data-tooltip-position="top" data-tooltip-text="More Options" aria-label="More Options" data-resin-target="moreoptions" tabIndex="0" onClick={this.onClick_dropdown_Handler}> ⋯ </button>
+                            <FilesDropDown is_active={is_active} active_dropdown_id={active_dropdown_id} onClickDropDown_handler={onClickDropDown_handler} dropdown_is_open={dropdown_is_open}    />
                         </div>
                     </div>
 
-                    { (is_active) &&
-                        <div className={`fl-item-dropdown ${dropdown_is_open ? 'active' : ''}`}>
-                            <ul className="fl-item-dropdown_list">
-                                <li>First Option</li>
-                                <li>Second Option</li>
-                                <li>Third Option</li>
-                            </ul>
-                        </div>
-                    }
+                 
                    
                 </li>
             </Fragment>

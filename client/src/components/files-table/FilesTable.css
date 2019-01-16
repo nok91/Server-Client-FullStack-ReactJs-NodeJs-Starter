@@ -230,6 +230,11 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     z-index: 9;
+    width: 150px;
+    text-align: left;
+    font-size: 13px;
+    line-height: 50px;
+    color: #767676;
 }
 
 .fl-item-dropdown.active {
@@ -240,6 +245,7 @@
     /* padding: 0px; */
     list-style: none;
     padding-left: 0;
+    margin: 0;
 }
 
 .fl-item-dropdown_list>li {
@@ -289,6 +295,7 @@
 }
 
 .grid-view-item {
+    position: relative;
     border: 1px solid #e5e5e5;
     border-radius: 2px;
     box-shadow: 0 1px 5px rgba(50, 50, 50, .1);
@@ -316,6 +323,7 @@
 }
 
 .grid-view-item-info {
+    position: relative;
     align-items: center;
     display: flex;
     padding: 12px 15px;
@@ -413,4 +421,19 @@
 
 .filter-grid-slider {
     margin-right: 50px;
+}
+
+.grid-view-content .file-list-item-context-menu,
+.grid-view-content .file-list-item-context-menu:hover {
+    border: 0px solid rgba(0, 0, 0, 0.2);
+    color: #767676;
+}
+
+.grid-view-content .fl-item-dropdown {
+    right: 23px;
+    margin-top: -30px;
+}
+
+*:focus {
+    outline: none !important;
 }
