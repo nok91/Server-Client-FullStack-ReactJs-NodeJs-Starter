@@ -23,10 +23,17 @@
     border-top: 1px solid rgba(190, 212, 222, .4);
 }
 
+.fl-item-wrapper.selected {
+    background: rgba(232, 243, 250, 1);
+    border-top: 1px solid rgba(190, 212, 222, .2);
+    border-bottom: 1px solid rgba(190, 212, 222, 0.2);
+}
+
 .fl-item-wrapper.active {
     background: rgba(232, 243, 250, 1);
     border-bottom: 1px solid rgba(190, 212, 222, 1);
     border-top: 1px solid rgba(190, 212, 222, 1);
+    z-index: 99;
 }
 
 .fl-item-wrapper.active:before {

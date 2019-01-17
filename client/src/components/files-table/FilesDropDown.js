@@ -35,10 +35,9 @@ class FilesDropDown extends Component {
                 {(is_active) &&
                     <div className={`fl-item-dropdown ${this.dropdown_is_open ? 'active' : ''}`}>
                         <ul className="fl-item-dropdown_list">
-                            <li>First Option</li>
-                            <li>Second Option</li>
-                            <li>Third Option</li>
-                            <li>Yeah HEll</li>
+                            <li>Download</li>
+                            <li>Add to Favorites</li>
+                            <li>Settings</li>
                         </ul>
                     </div>
                 }

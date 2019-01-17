@@ -13,9 +13,9 @@ import FilesTableGrid from './FilesTableGrid';
 class FilesTable extends Component {
     state = {
         active_row_id: -1,
-        active_dropdown_id: -1,
+        arraySelectsRow: [],
         dropdown_is_open: false,
-        is_view_list: false,
+        is_view_list: true,
         sliderValue: 2,
         filter_active_id: -1,
         filter_is_asc: true,
@@ -38,25 +38,15 @@ class FilesTable extends Component {
         ]
     }
 
-    componentWillUnmount() {
-        if (this.state.active_row_id === this.state.active_dropdown_id) {
-            this.setState({
-                active_dropdown_id: -1
-            })
-        }
-    }
-
-
     onClick_filter_handler = (index) => {
         const { table_data, filter_active_id, filter_data, filter_is_asc} = this.state;
-        console.log(filter_is_asc, index)
 
         if (filter_active_id === index) {
             this.setState({
                 filter_is_asc: !filter_is_asc,
                 table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), !filter_is_asc)
             })
-        } else {
+        }else {
             if (filter_data[index] !== undefined) {
                 this.setState({
                     filter_active_id: index,
@@ -67,16 +57,39 @@ class FilesTable extends Component {
         }
     }
   
-    onClick_handler = (index) => {
+    onClick_handler = (index, e ) => {
+        if (e.ctrlKey) {
+            if (this.state.arraySelectsRow.includes(index)) {
+                this.setState({
+                    arraySelectsRow: this.state.arraySelectsRow.filter(item => item != index),
+                })
+            }else{
+                this.setState({
+                    arraySelectsRow: [...this.state.arraySelectsRow, index],
+                })
+            }
+        } else if (e.shiftKey){
+            //TODO: Handle shift key and multi selection
+
+            // startSelecting = false;
+
+            // this.state.arraySelectsRow.forEach(element => {
+            //     if (active_row_id === id) {
+            //         startSelecting = true;
+            //     }
+            // });
+            
+            // console.log("shift key pressed")
+        }else{
+            this.setState({
+                arraySelectsRow: [index],
+            })
+        }
+
         this.setState({
             active_row_id: index,
         })
-    }
-
-    onClickDropDown_handler = (index) => {
-        this.setState({
-            dropdown_is_open: !this.state.dropdown_is_open
-        })
+        
     }
 
     onClick_ChangeView = (_val) =>{
@@ -105,6 +118,17 @@ class FilesTable extends Component {
         }
     }
 
+    checkIfSelected = (id) => {
+        var exist = false;
+        this.state.arraySelectsRow.forEach(element => {
+            if (element === id) {
+                exist = true;
+            }
+        });
+
+        return exist;
+    }
+
     render() {
         const { active_row_id, table_data, is_view_list, sliderValue, active_dropdown_id} = this.state;
 
@@ -123,13 +147,13 @@ class FilesTable extends Component {
                         <ol className="file_list" >
                             {table_data.map((row, index) => {
                                 return (
-                                    <FilesTableRow {...row} key={index} is_active={active_row_id === row.Id ? true : false} onClick_handler={() => this.onClick_handler(row.Id)} onClickDropDown_handler={() => this.onClickDropDown_handler(row.Id)} dropdown_is_open={this.state.dropdown_is_open}  />
+                                    <FilesTableRow {...row} key={index} is_active={active_row_id === row.Id} selectedRows={this.checkIfSelected(row.Id)} onClick_handler={(e) => this.onClick_handler(row.Id, e)}  />
                                 );
                             })}
                         </ol>
                     :
                     <div className={`grid-view-content grid-size-${sliderValue+1} `}>
-                        <FilesTableGrid data={table_data} is_active={active_row_id} onClick_handler={(_index) => this.onClick_handler(_index)} onClickDropDown_handler={(_index) => this.onClickDropDown_handler(_index)} dropdown_is_open={this.state.dropdown_is_open}  />
+                        <FilesTableGrid data={table_data} is_active={active_row_id} arraySelectsRow={this.state.arraySelectsRow} checkIfSelected={(_id) => this.checkIfSelected(_id)} onClick_handler={(_index, e) => this.onClick_handler(_index, e)}  />
                     </div>
                 }
                

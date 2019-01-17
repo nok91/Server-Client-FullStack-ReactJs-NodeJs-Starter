@@ -29,7 +29,7 @@ class FilesTableGridFolder extends Component {
         const { item, is_active, onClick_handler } = this.props;
         return (
             <React.Fragment>
-                <div className={`grid-view-item is-folder  ${is_active ? 'active' : ''}`} onClick={() => { onClick_handler(item.Id);} } >
+                <div className={`grid-view-item is-folder  ${is_active ? 'active' : ''}`} onClick={(e) => { onClick_handler(item.Id, e);} } >
                     <div className="grid-view-item-info ">
                         <img className="grid-view-item-info-icon" src={folder_icon} width="32" height="32" alt="logo folder icon" />
 

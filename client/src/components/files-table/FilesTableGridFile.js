@@ -42,7 +42,7 @@ class FilesTableGridFile extends Component {
         var { item, is_active, onClick_handler}  = this.props;
         return (
             <React.Fragment>
-                <div className={`grid-view-item ${is_active ? 'active' : ''}`} onClick={() => onClick_handler(item.Id)}>
+                <div className={`grid-view-item ${is_active ? 'active' : ''}`} onClick={(e) => onClick_handler(item.Id, e)}>
                     <div className="grid-view-item-thumbnail">
                         {this.renderFiles(item)}
                     </div>

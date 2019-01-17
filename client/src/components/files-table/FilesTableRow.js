@@ -10,7 +10,7 @@ import FilesDropDown from './FilesDropDown';
 class FilesTableRow extends Component {
 
     render() {
-        const { updated, name, size, onClick_handler, is_active, type, active_dropdown_id, onClickDropDown_handler, dropdown_is_open} = this.props;
+        const { updated, name, size, onClick_handler, is_active, type, active_dropdown_id, onClickDropDown_handler, dropdown_is_open, selectedRows} = this.props;
         var icon = folder_icon;
 
         switch (type) {
@@ -30,7 +30,7 @@ class FilesTableRow extends Component {
       
         return (
             <Fragment>
-                <li className={`noselect fl-item-wrapper ${is_active  ? 'active' : ''}`} onClick={onClick_handler}>
+                <li className={`noselect fl-item-wrapper ${is_active ? 'active' : ''} ${selectedRows ? 'selected' : ''}`}  onClick={onClick_handler}>
                     <div className="fl-item-row">
                         <div className="fl-item-icon-wrapper " >
                             <div className="fl-item-icon is-image-loaded" style={{ backgroundImage: `url(${icon})` }} />
