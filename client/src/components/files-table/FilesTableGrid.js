@@ -25,7 +25,7 @@ class FilesTableGrid extends Component {
     }
 
     render() {
-        const { is_active, onClick_handler, checkIfSelected } = this.props;
+        const {  onClick_handler, checkIfSelected } = this.props;
         
         return (
             <React.Fragment>

@@ -8,7 +8,9 @@ import _gridIcon from '../../media/icons/fl-list-header-actions-grid.svg';
 import './FilesTable.css'
 import FilesTableGrid from './FilesTableGrid';
 
-
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 class FilesTable extends Component {
     state = {
@@ -24,18 +26,18 @@ class FilesTable extends Component {
             { title: 'Updated', _className: 'fl-item-updated' },
             { title: 'Size', _className: 'fl-item-size' },
         ],
-        table_data: [
-            { Id:"87b9a123-0670-4f23-8064-50595d216f47", type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2 },
-            { Id:"87b9a123-1670-4f23-2974-85234d216f47", type: 'folder', name: 'Test Folder 1', updated: 'Mohammed Nokri', size: 40 },
-            { Id:"87b9a123-2670-4f23-3884-50595d216f47", type: 'folder', name: 'Test Folder 5', updated: 'Zorro Neve', size: 30 },
-            { Id:"87b9a123-3670-4f23-4793-50595d216f47", type: 'folder', name: 'Test Folder 4', updated: 'Alex Neve', size: 20 },
-            { Id:"87b9b123-0670-4f23-6666-50595d216f47", type: 'txt', name: 'Test Text file', updated: 'Carlo Bacchi', size: 20, src: "https://dataroom-dev.azurewebsites.net/Library/Download/24" },
-            { Id:"87b9a123-0670-4f23-7510-50595d216f47", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60 },
-            { Id:"87b9a123-0670-4f23-8460-50595d216f47", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/8"},
-            { Id:"87b9a123-0670-4f23-9362-50595d216f47", type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29 },
-            { Id: "87b9a123-0670-4f23-1263-50595d216f47", type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29, src: "http://static.boxxed.com/boxxed/Media/images/projects/p_12/Preview.jpg", download: "https://dataroom-dev.azurewebsites.net/Library/Download/25"},
-            { Id:"87b9a123-0670-4f23-0166-50595d216f47", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/9" },
-        ]
+        table_data: []
+    }
+
+    componentDidMount() {
+        console.log("component did mount!!!");
+        this.props.GetFiles((files) => {
+            this.setState({
+                table_data: files.data
+            })
+        });
+
+      
     }
 
     onClick_filter_handler = (index) => {
@@ -61,7 +63,7 @@ class FilesTable extends Component {
         if (e.ctrlKey) {
             if (this.state.arraySelectsRow.includes(index)) {
                 this.setState({
-                    arraySelectsRow: this.state.arraySelectsRow.filter(item => item != index),
+                    arraySelectsRow: this.state.arraySelectsRow.filter(item => item !== index),
                 })
             }else{
                 this.setState({
@@ -135,7 +137,7 @@ class FilesTable extends Component {
         return (
             <Fragment>
                     <div className="files-filters-header">
-                    <FilesTableHeader filter_active_id={this.state.filter_active_id} filter_is_asc={this.state.filter_is_asc} onClick_handler={this.onClick_filter_handler} filter_data={this.state.filter_data} is_view_list={is_view_list} handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue} active_dropdown_id={active_dropdown_id}>
+                        <FilesTableHeader filter_active_id={this.state.filter_active_id} filter_is_asc={this.state.filter_is_asc} onClick_handler={this.onClick_filter_handler} filter_data={this.state.filter_data} is_view_list={is_view_list} handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue} active_dropdown_id={active_dropdown_id}>
                             <div className="fl-list-header-actions">
                                 <img className={`fl-list-header-actions-icon ${is_view_list ? 'active' : ''}`} src={_listIcon} alt="list view" onClick={() => this.onClick_ChangeView(true)} />
                                 <img className={`fl-list-header-actions-icon ${!is_view_list ? 'active' : ''}`} src={_gridIcon} alt="grid view" onClick={() => this.onClick_ChangeView(false)} />
@@ -143,18 +145,26 @@ class FilesTable extends Component {
                         </FilesTableHeader>
                     </div>
 
-                { is_view_list ?
-                        <ol className="file_list" >
-                            {table_data.map((row, index) => {
-                                return (
-                                    <FilesTableRow {...row} key={index} is_active={active_row_id === row.Id} selectedRows={this.checkIfSelected(row.Id)} onClick_handler={(e) => this.onClick_handler(row.Id, e)}  />
-                                );
-                            })}
-                        </ol>
+
+
+                {
+                    table_data.length > 0 ?
+                    
+                        is_view_list ?
+                            <ol className="file_list" >
+                                {table_data.map((row, index) => {
+                                    return (
+                                        <FilesTableRow {...row} key={index} is_active={active_row_id === row.Id} selectedRows={this.checkIfSelected(row.Id)} onClick_handler={(e) => this.onClick_handler(row.Id, e)} />
+                                    );
+                                })}
+                            </ol>
+                        :
+                            <div className={`grid-view-content grid-size-${sliderValue + 1} `}>
+                                <FilesTableGrid data={table_data} is_active={active_row_id} arraySelectsRow={this.state.arraySelectsRow} checkIfSelected={(_id) => this.checkIfSelected(_id)} onClick_handler={(_index, e) => this.onClick_handler(_index, e)} />
+                            </div>
                     :
-                    <div className={`grid-view-content grid-size-${sliderValue+1} `}>
-                        <FilesTableGrid data={table_data} is_active={active_row_id} arraySelectsRow={this.state.arraySelectsRow} checkIfSelected={(_id) => this.checkIfSelected(_id)} onClick_handler={(_index, e) => this.onClick_handler(_index, e)}  />
-                    </div>
+
+                        <LinearProgress />
                 }
                
             </Fragment>
@@ -162,4 +172,11 @@ class FilesTable extends Component {
     }
 }
 
-export default FilesTable;
+
+function mapStateToProps(state) {
+    return {
+        errorMessage: state.auth.errorMessage,
+    }
+}
+
+export default connect(mapStateToProps, actions)(FilesTable);

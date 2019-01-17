@@ -1,11 +1,12 @@
 import axios  from 'axios';
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR, GET_FILES, FILES_ERROR} from './types';
 
+const BASE_URL = 'http://localhost:3090';
 
 //formProps contain { email, password }
 export const Signup = (formProps, callback) => async dispatch => {
    try{
-       const response = await axios.post('http://localhost:3090/signup', formProps);
+       const response = await axios.post(`${BASE_URL}/signup`, formProps);
        dispatch({ type: AUTH_USER, payload: response.data.token });
        localStorage.setItem('token', response.data.token)
        callback();
@@ -16,7 +17,7 @@ export const Signup = (formProps, callback) => async dispatch => {
 
 export const Signin = (formProps, callback) => async dispatch => {
     try {
-        const response = await axios.post('http://localhost:3090/signin', formProps);
+        const response = await axios.post(`${BASE_URL}/signin`, formProps);
         dispatch({ type: AUTH_USER, payload: response.data.token });
         localStorage.setItem('token', response.data.token)
         callback();
@@ -25,7 +26,7 @@ export const Signin = (formProps, callback) => async dispatch => {
     }
 };
 
-export const Signout = () => {
+export const Signout = (callback) => {
     localStorage.removeItem('token');
 
     return {
@@ -33,3 +34,15 @@ export const Signout = () => {
         payload: ''
     };
 };
+
+
+export const GetFiles = (callback) => async dispatch => {
+    try{
+        const response = await axios.get(`${BASE_URL}/folder`);
+        dispatch({ type: GET_FILES, payload: response.data });
+
+        callback(response);
+    } catch (e) {
+        dispatch({ type: FILES_ERROR, payload: 'Invalid Files Loading' });
+    }
+}
