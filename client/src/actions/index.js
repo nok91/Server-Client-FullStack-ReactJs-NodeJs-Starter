@@ -36,9 +36,9 @@ export const Signout = (callback) => {
 };
 
 
-export const GetFiles = (callback) => async dispatch => {
+export const GetFiles = (props, callback) => async dispatch => {
     try{
-        const response = await axios.get(`${BASE_URL}/folder`);
+        const response = await axios.get(`${BASE_URL}/folder`, { params: props });
         dispatch({ type: GET_FILES, payload: response.data });
 
         callback(response);

@@ -14,7 +14,19 @@
     color: #494949;
     position: relative;
     line-height: 50px;
-    cursor: pointer;
+}
+
+.fl-item-wrapper a,
+.fl-item-wrapper a:active,
+.grid-view-item a,
+.grid-view-item a:active {
+    text-decoration: none;
+    color: #494949
+}
+
+.fl-item-wrapper a:hover,
+.grid-view-item a:hover {
+    text-decoration: underline;
 }
 
 .fl-item-wrapper:hover {

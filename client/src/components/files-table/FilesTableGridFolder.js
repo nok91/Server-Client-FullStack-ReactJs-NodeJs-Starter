@@ -7,18 +7,6 @@ class FilesTableGridFolder extends Component {
         is_active: false,
     }
 
-    componentDidMount(){
-      
-    }
-
-
-    componentWillUnmount () {
-        console.log("componentWillUnmount")
-        this.setState({
-            dropdown_is_open: false
-        })
-    }
-
     onClick_handler () {
         this.setState({
             is_active: true
@@ -26,7 +14,7 @@ class FilesTableGridFolder extends Component {
     }
 
     render() {
-        const { item, is_active, onClick_handler } = this.props;
+        const { item, is_active, onClick_handler,  match } = this.props;
         return (
             <React.Fragment>
                 <div className={`grid-view-item is-folder  ${is_active ? 'active' : ''}`} onClick={(e) => { onClick_handler(item.Id, e);} } >
@@ -34,7 +22,7 @@ class FilesTableGridFolder extends Component {
                         <img className="grid-view-item-info-icon" src={folder_icon} width="32" height="32" alt="logo folder icon" />
 
                         <div className="grid-view-item-info-details">
-                            <div className="grid-view-item-info-details-list-name">{item.name}</div>
+                            <div className="grid-view-item-info-details-list-name">   <a href={`${match.path}/${item.Id}`}>  {item.name}  </a></div>
                             <div className="grid-view-item-info-details-list-date">Today by {item.updated}</div>
                             <div className="grid-view-item-info-details-list-size">{item.size} File</div>
                         </div>

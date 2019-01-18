@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
@@ -34,7 +34,10 @@ ReactDOM.render(
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/features" component={Feature} />
-                <Route path="/folder" component={AllFiles} />
+                <Switch>
+                    <Route path="/folder/:id" component={AllFiles} />
+                    <Route path="/folder" component={AllFiles} />
+                </Switch>
             </App>
         </BrowserRouter>
     </Provider>, 

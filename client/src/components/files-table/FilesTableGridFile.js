@@ -4,7 +4,6 @@ import FilesDropDown from './FilesDropDown';
 //import folder_icon from '../../media/icons/folder-icon.svg';
 import file_txt_icon from '../../media/icons/file-txt-icon.svg';
 import file_pdf_icon from '../../media/icons/file-pdf-icon.svg';
-
 class FilesTableGridFile extends Component {
 
     state = {
@@ -39,7 +38,7 @@ class FilesTableGridFile extends Component {
     }
 
     render() {
-        var { item, is_active, onClick_handler}  = this.props;
+        var { item, is_active, onClick_handler, match}  = this.props;
         return (
             <React.Fragment>
                 <div className={`grid-view-item ${is_active ? 'active' : ''}`} onClick={(e) => onClick_handler(item.Id, e)}>
@@ -48,7 +47,7 @@ class FilesTableGridFile extends Component {
                     </div>
                     <div className="grid-view-item-info">
                         <div className="grid-view-item-info-details">
-                            <div className="grid-view-item-info-details-list-name">{item.name}</div>
+                            <div className="grid-view-item-info-details-list-name"><a href={`${match.path}/${item.Id}`}>  {item.name}  </a></div>
                             <div className="grid-view-item-info-details-list-date">Today by {item.updated}</div>
                             <div className="grid-view-item-info-details-list-size">{item.size} File</div>
                         </div>

@@ -29,20 +29,64 @@ module.exports = function (app) {
     });
 
     app.get('/folder', function (req, res) {
-        res.send(
-            [
-                { Id: "87b9a123-0670-4f23-8064-50595d216f47", type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2 },
-                { Id: "87b9a123-1670-4f23-2974-85234d216f47", type: 'folder', name: 'Test Folder 1', updated: 'Mohammed Nokri', size: 40 },
-                { Id: "87b9a123-2670-4f23-3884-50595d216f47", type: 'folder', name: 'Test Folder 5', updated: 'Zorro Neve', size: 30 },
-                { Id: "87b9a123-3670-4f23-4793-50595d216f47", type: 'folder', name: 'Test Folder 4', updated: 'Alex Neve', size: 20 },
-                { Id: "87b9b123-0670-4f23-6666-50595d216f47", type: 'txt', name: 'Test Text file', updated: 'Carlo Bacchi', size: 20, src: "https://dataroom-dev.azurewebsites.net/Library/Download/24" },
-                { Id: "87b9a123-0670-4f23-7510-50595d216f47", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60 },
-                { Id: "87b9a123-0670-4f23-8460-50595d216f47", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/8" },
-                { Id: "87b9a123-0670-4f23-9362-50595d216f47", type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29 },
-                { Id: "87b9a123-0670-4f23-1263-50595d216f47", type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29, src: "http://static.boxxed.com/boxxed/Media/images/projects/p_12/Preview.jpg", download: "https://dataroom-dev.azurewebsites.net/Library/Download/25" },
-                { Id: "87b9a123-0670-4f23-0166-50595d216f47", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/9" },
-            ]
-        );
+
+        var _Id = req.query.Id || 0;
+
+        var data = { }
+
+
+        switch (_Id) {
+            case "10145259659":
+            case "0" : 
+                var data = {
+                    Id: "0",
+                    type: 'folder',
+                    name: 'Main Folder',
+                    updated: 'Data-Room',
+                    size: 10,
+                    files: [
+                        { Id: "380652543720", type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2, root: "380652543720" },
+                        { Id: "379340707916", type: 'folder', name: 'Test Folder 1', updated: 'Mohammed Nokri', size: 40, root: "379340707916" },
+                        { Id: "63576959235", type: 'folder', name: 'Test Folder 5', updated: 'Zorro Neve', size: 30, root: "63576959235" },
+                        { Id: "50432995144", type: 'folder', name: 'Test Folder 4', updated: 'Alex Neve', size: 20, root: "50432995144" },
+                        { Id: "40315259652", type: 'txt', name: 'Test Text file', updated: 'Carlo Bacchi', size: 20, src: "https://dataroom-dev.azurewebsites.net/Library/Download/24", root: "379340707916" },
+                        { Id: "20295259650", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60, root: "20295259650" },
+                        { Id: "10145259659", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/8", root: "379340707916" },
+                        { Id: "20055259652", type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29, root: "20055259652" },
+                        { Id: "90905259656", type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29, src: "http://static.boxxed.com/boxxed/Media/images/projects/p_12/Preview.jpg", download: "https://dataroom-dev.azurewebsites.net/Library/Download/25", root: "379340707916" },
+                        { Id: "108252596528", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/9", root: "379340707916" }
+                    ]
+                }
+
+            break;
+            case "380652543720":
+
+                data = {
+                    Id: "0",
+                    type: 'folder',
+                    name: 'Test Folder 2',
+                    updated: 'Bianca Neve',
+                    size: 10,
+                    files: [
+                        { Id: "40315259652", type: 'txt', name: 'Test Text file', updated: 'Carlo Bacchi', size: 20, src: "https://dataroom-dev.azurewebsites.net/Library/Download/24", root: "379340707916" },
+                        { Id: "20295259650", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60, root: "20295259650" },
+                        { Id: "10145259659", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "https://dataroom-dev.azurewebsites.net/Library/Download/8", root: "379340707916" },
+                        { Id: "90905259656", type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29, src: "http://static.boxxed.com/boxxed/Media/images/projects/p_12/Preview.jpg", download: "https://dataroom-dev.azurewebsites.net/Library/Download/25", root: "379340707916" },
+                    ]
+                }
+                
+                break;
+        
+            default:
+                    
+                break;
+        }
+
+
+        console.log("here I'm", req.query)
+       
+
+        res.send(data);
     });
 
     app.post('/signin', requireSignin, Authentication.signin )

@@ -1,0 +1,10 @@
+.fileViewer-contaner{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: red;
+    top:0px;
+    left:0px;
+    z-index: 9991;
+    overflow: hidden;
+}

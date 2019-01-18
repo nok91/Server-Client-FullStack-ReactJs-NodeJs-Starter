@@ -10,9 +10,8 @@ import FilesDropDown from './FilesDropDown';
 class FilesTableRow extends Component {
 
     render() {
-        const { updated, name, size, onClick_handler, is_active, type, active_dropdown_id, onClickDropDown_handler, dropdown_is_open, selectedRows} = this.props;
+        const { updated, name, size, onClick_handler, is_active, type, active_dropdown_id, onClickDropDown_handler, dropdown_is_open, selectedRows, row, match, getFileHandler} = this.props;
         var icon = folder_icon;
-
         switch (type) {
             case 'image':
                 icon = file_image_icon;
@@ -29,14 +28,15 @@ class FilesTableRow extends Component {
         }
       
         return (
-            <Fragment>
+            <Fragment >
                 <li className={`noselect fl-item-wrapper ${is_active ? 'active' : ''} ${selectedRows ? 'selected' : ''}`}  onClick={onClick_handler}>
+                   
                     <div className="fl-item-row">
                         <div className="fl-item-icon-wrapper " >
                             <div className="fl-item-icon is-image-loaded" style={{ backgroundImage: `url(${icon})` }} />
                         </div>
                         <div className="fl-item-name">
-                            {name}
+                            <a onClick={() => getFileHandler( { })} href={`/folder/${row.Id}`}>  {name}  </a>
                         </div>
                         <div className="fl-item-resize-handle" />
                         <div className="fl-item-updated">
@@ -51,7 +51,7 @@ class FilesTableRow extends Component {
                         </div>
                     </div>
 
-                 
+                  
                    
                 </li>
             </Fragment>

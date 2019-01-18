@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import FilesTableGridFolder from './FilesTableGridFolder';
 import FilesTableGridFile from './FilesTableGridFile';
 
+
 class FilesTableGrid extends Component {
     componentDidMount () {
         // console.log(this.props.data.filter(el => el.type === 'folder'))
@@ -33,7 +34,7 @@ class FilesTableGrid extends Component {
                     <div className="grid-view-items">
                         {this.selectByFolder_helper(true).map((el, index) => {
                             return (
-                                <FilesTableGridFolder item={el} key={index} is_active={checkIfSelected(el.Id)} onClick_handler={(_item, e) => onClick_handler(_item, e)}  />
+                                <FilesTableGridFolder {...el} {...this.props} item={el} key={index} is_active={checkIfSelected(el.Id)} onClick_handler={(_item, e) => onClick_handler(_item, e)}  />
                             );
                         })}
                     </div>
@@ -41,7 +42,7 @@ class FilesTableGrid extends Component {
                     <div className="grid-view-items ">
                         {this.selectByFolder_helper(false).map((el, index) => {
                             return (
-                                <FilesTableGridFile item={el} key={index} is_active={checkIfSelected(el.Id)} onClick_handler={(_item, e) => onClick_handler(_item, e)}  />
+                                <FilesTableGridFile {...el} {...this.props} item={el} key={index} is_active={checkIfSelected(el.Id)} onClick_handler={(_item, e) => onClick_handler(_item, e)}  />
                             );
                         })}
                     </div>
