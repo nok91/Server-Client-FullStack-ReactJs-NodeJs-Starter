@@ -9,6 +9,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import './allFiles.css';
 import FilesViewer from '../files-table/FilesViewer';
 import Grid from '@material-ui/core/Grid';
+import FilesViewerTest from '../files-table/FilesViewerTest';
 class AllFiles extends Component {
     state = {
         table_data: [],
@@ -30,7 +31,7 @@ class AllFiles extends Component {
             try {
 
                 var found = files.data.files.find(function (element) {
-                    return element.Id == _id;
+                    return element.Id === _id;
                 });
 
                 if (typeof found === 'object' && found !== null){
@@ -86,6 +87,8 @@ class AllFiles extends Component {
                     filesViewer &&
 
                     <FilesViewer table_data={table_data} filesViewer={filesViewer}  />
+
+                    // <FilesViewerTest />
                 }
               
             </Fragment>

@@ -1,10 +1,28 @@
-.fileViewer-contaner{
+.fileViewer-contaner {
     width: 100vw;
-    height: 100vh;
-    position: fixed;
-    background: red;
-    top:0px;
-    left:0px;
+    min-height: 100vh;
+    position: absolute;
+    background-color: whitesmoke;
+    top: 0px;
+    left: 0px;
     z-index: 9991;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.react-pdf__Document {
+    width: 100vw;
+}
+
+.react-pdf__Page__canvas {
+    position: absolute;
+}
+
+.react-pdf__Page {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: center;
 }
