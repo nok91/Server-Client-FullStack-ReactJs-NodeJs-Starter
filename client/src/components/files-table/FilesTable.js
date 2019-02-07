@@ -112,7 +112,7 @@ class FilesTable extends Component {
         return (
             <Fragment>
                     <div className="files-filters-header">
-                        <FilesTableHeader {...this.state}>
+                        <FilesTableHeader {...this.state}  handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue}> 
                             <div className="fl-list-header-actions">
                                 <img className={`fl-list-header-actions-icon ${is_view_list ? 'active' : ''}`} src={_listIcon} alt="list view" onClick={() => this.onClick_ChangeView(true)} />
                                 <img className={`fl-list-header-actions-icon ${!is_view_list ? 'active' : ''}`} src={_gridIcon} alt="grid view" onClick={() => this.onClick_ChangeView(false)} />

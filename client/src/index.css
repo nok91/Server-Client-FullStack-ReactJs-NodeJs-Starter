@@ -6,6 +6,10 @@ body {
     overflow-x: hidden;
 }
 
+#root{
+    overflow: hidden;
+}
+
 .noselect {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -19,7 +23,7 @@ body {
     /* Internet Explorer/Edge */
     user-select: none;
     /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+    supported by Chrome and Opera */
 }
 
 .btn {

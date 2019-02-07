@@ -11,6 +11,7 @@ class FilesTableRow extends Component {
 
     render() {
         const { updated, name, size, onClick_handler, is_active, type, active_dropdown_id, onClickDropDown_handler, dropdown_is_open, selectedRows, row, getFileHandler} = this.props;
+
         var icon = folder_icon;
         switch (type) {
             case 'image':
@@ -36,7 +37,7 @@ class FilesTableRow extends Component {
                             <div className="fl-item-icon is-image-loaded" style={{ backgroundImage: `url(${icon})` }} />
                         </div>
                         <div className="fl-item-name">
-                            <a onClick={() => getFileHandler( { })} href={`/folder/${row.Id}`}>  {name}  </a>
+                            <a onClick={() => getFileHandler( { })} href={(row.type == 'folder' ? '/folder' : '/file') +`/${row.Id}`}>  {name}  </a>
                         </div>
                         <div className="fl-item-resize-handle" />
                         <div className="fl-item-updated">
@@ -50,9 +51,6 @@ class FilesTableRow extends Component {
                             <FilesDropDown is_active={is_active} active_dropdown_id={active_dropdown_id} onClickDropDown_handler={onClickDropDown_handler} dropdown_is_open={dropdown_is_open}    />
                         </div>
                     </div>
-
-                  
-                   
                 </li>
             </Fragment>
         );

@@ -16,8 +16,10 @@ mongoose.connect('mongodb://localhost:auth/auth', { useNewUrlParser: true, useCr
 app.use(morgan('combined'));  //morgan is log in incoming request, using for debugging
 app.use(cors()); //Allow request to coming from  anywhere (for security setup to accept requesto for a certain domain, subdomain or specific port)
 app.use(bodyParser.json({ type : '*/*'})); // parse incoming request, it gonna be parsed as JSON
-router(app);
 
+app.use('/files', express.static(__dirname + '/files'));
+
+router(app);
 
 // Server Setup
 const port = process.env.PORT || 3090;

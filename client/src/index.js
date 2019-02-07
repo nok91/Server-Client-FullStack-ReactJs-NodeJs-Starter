@@ -37,7 +37,10 @@ ReactDOM.render(
                 <Switch>
                     <Route path="/folder/:id" component={AllFiles} />
                     <Route path="/folder" component={AllFiles} />
+                    <Route path="/file/:id" component={AllFiles} />
+                    <Route path="/file" component={AllFiles} />
                 </Switch>
+                
             </App>
         </BrowserRouter>
     </Provider>, 
