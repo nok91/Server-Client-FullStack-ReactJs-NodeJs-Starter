@@ -77,8 +77,8 @@ module.exports = function (app) {
                 ]},
                 { Id: "40315259652", type: 'txt', name: 'Test Text file', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "0" },
                 { Id: "20295259650", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60, root: "0"  , files: [
-                    { Id: "80315539607", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "https://dataroom-dev.azurewebsites.net/Library/Download/24", root: "40315259652" },
-                    { Id: "03305159691", type: 'pdf', name: 'Pdf Sample uno', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "40315259652" },
+                    { Id: "80315539607", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20295259650" },
+                    { Id: "03305159691", type: 'pdf', name: 'Pdf Sample uno', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "20295259650" },
                 ]},
                 { Id: "10145259659", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample.pdf", root: "0" },
                 { Id: "20055259652", type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29, root: "0"  , files: [
@@ -86,14 +86,13 @@ module.exports = function (app) {
                     { Id: "40305250610", type: 'txt', name: 'Test Text file otto', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20055259652" },
                     { Id: "01014159667", type: 'image', name: 'Test Image ocho', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample.jpg", root: "20055259652" },
                 ]},
-                { Id: "90905259656", type: 'image', name: 'Test Image 1', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample.jpg", root: "0" },
-                { Id: "108252596528", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "0" }
+                { Id: "90905259656", type: 'image', name: 'Test Image 2', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-2.jpg", root: "0" },
+                { Id: "108252596528", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "0" },
+                { Id: "19805256954", type: 'image', name: 'Test Image 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-3.jpg", root: "0" },
+                { Id: "19805244415", type: 'image', name: 'Test Image 4', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-4.jpg", root: "0" },
             ]
         }
 
-
-
-        console.log("Result: ");
         data = _Id == 0  ? data : findById(data.files, _Id);
 
         // switch (_Id) {

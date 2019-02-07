@@ -27,7 +27,6 @@ class AllFiles extends Component {
 
             try {
                 if (typeof files.data === 'object' && files.data !== null){
-                    console.log(this.props.match.path)
                     if(this.props.match.path == '/file' || this.props.match.path == '/file/:id') {
                         // Open Files Viewer
                         this.setState({
@@ -55,7 +54,6 @@ class AllFiles extends Component {
     }
 
     getFileHandler = (props) => {
-        console.log(props);
     }
 
     render() {

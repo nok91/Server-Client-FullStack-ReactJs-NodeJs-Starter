@@ -8,13 +8,14 @@ import IconButton from '@material-ui/core/IconButton';
 import "./FilesViewer.css"
 import FilesViewerPdf from './FilesViewerPdf';
 import FilesViewerTxt from './FilesViewerTxt';
+import FilesViewerImg from './FilesViewerImg';
 
 class FilesViewer extends Component {
 
 
     viewFilesHandler ()  {
         const { filesViewer } = this.props;
-        console.log(this.props)
+
         switch(filesViewer.type.toLowerCase()) {
             case 'pdf' :
                     return <FilesViewerPdf {...this.props} />
@@ -22,6 +23,8 @@ class FilesViewer extends Component {
             case 'txt' :
                     return <FilesViewerTxt {...this.props}  />
                 break;
+            case 'image' :
+                    return <FilesViewerImg  {...this.props}  />
             default: 
                     return "HERE IS A FILE"
                 break;
@@ -56,9 +59,7 @@ class FilesViewer extends Component {
                 </AppBar>
 
                 <div style={{width : "100vw"}}>
-
                    {this.viewFilesHandler()}
-                  
                 </div>
             </div>
         );
