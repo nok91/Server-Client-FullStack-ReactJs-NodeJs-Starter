@@ -59,37 +59,38 @@ module.exports = function (app) {
             name: 'Main Folder',
             updated: 'Data-Room',
             size: 10,
+            history: [{Id: '0', name: 'Home'}],
             files: [
-                { Id: "380652543720", type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2, root: "0", files: [
-                    { Id: "90345259699", type: 'pdf', name: 'Pdf Sample 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-3.pdf", root: "380652543720" },
-                    { Id: "450652543761", type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2, root: "380652543720", files: [
-                        { Id: "00344259687", type: 'pdf', name: 'Pdf Sample 2', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "450652543761" },
-                        { Id: "10345259691", type: 'pdf', name: 'Pdf Sample 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-3.pdf", root: "450652543761" },
+                { Id: "380652543720", type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2, root: "0", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}], files: [
+                    { Id: "90345259699", type: 'pdf', name: 'Pdf Sample 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-3.pdf", root: "380652543720", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}] },
+                    { Id: "450652543761", type: 'folder', name: 'Test Folder z', updated: 'Bianca Neve', size: 2, root: "380652543720", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}, {Id: '450652543761', name: 'Test Folder z'}] , files: [
+                        { Id: "00344259687", type: 'pdf', name: 'Pdf Sample 2', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "450652543761", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder z'}, {Id: '450652543761', name: 'Test Folder 2'}] },
+                        { Id: "10345259691", type: 'pdf', name: 'Pdf Sample 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-3.pdf", root: "450652543761", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder z'}, {Id: '450652543761', name: 'Test Folder 2'}] },
                     ] },
                 ] },
-                { Id: "379340707916", type: 'folder', name: 'Test Folder 1', updated: 'Mohammed Nokri', size: 40, root: "0", files: [
-                    { Id: "10315259650", type: 'txt', name: 'Test Text file 1', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "379340707916" },
-                    { Id: "10315259650", type: 'txt', name: 'Test Text file 2', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "379340707916" },
+                { Id: "379340707916", type: 'folder', name: 'Test Folder 1', updated: 'Mohammed Nokri', size: 40, root: "0", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}], files: [
+                    { Id: "10315259650", type: 'txt', name: 'Test Text file 1', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "379340707916", history: [{Id: '0', name: 'Home'}, {Id: '379340707916', name: 'Test Folder 1'}] },
+                    { Id: "10315259650", type: 'txt', name: 'Test Text file 2', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "379340707916", history: [{Id: '0', name: 'Home'}, {Id: '379340707916', name: 'Test Folder 1'}] },
                 ] },
-                { Id: "50432995144", type: 'folder', name: 'Test Folder 4', updated: 'Alex Neve', size: 20, root: "50432995144" , files: [
-                    { Id: "89315533617", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "50432995144" },
-                    { Id: "12305259600", type: 'txt', name: 'Test Text file otto', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "50432995144" },
+                { Id: "50432995144", type: 'folder', name: 'Test Folder 4', updated: 'Alex Neve', size: 20, root: "50432995144", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}] , files: [
+                    { Id: "89315533617", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "50432995144", history: [{Id: '0', name: 'Home'}, {Id: '50432995144', name: 'Test Folder 4'}] },
+                    { Id: "12305259600", type: 'txt', name: 'Test Text file otto', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "50432995144", history: [{Id: '0', name: 'Home'}, {Id: '50432995144', name: 'Test Folder 4'}] },
                 ]},
-                { Id: "40315259652", type: 'txt', name: 'Test Text file', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "0" },
-                { Id: "20295259650", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60, root: "0"  , files: [
-                    { Id: "80315539607", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20295259650" },
-                    { Id: "03305159691", type: 'pdf', name: 'Pdf Sample uno', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "20295259650" },
+                { Id: "40315259652", type: 'txt', name: 'Test Text file', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "0", history: [{Id: '0', name: 'Home'}] },
+                { Id: "20295259650", type: 'folder', name: 'Test Folder 9', updated: 'David Zuru', size: 60, root: "0", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}]  , files: [
+                    { Id: "80315539607", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20295259650", history: [{Id: '0', name: 'Home'}, {Id: '20295259650', name: 'Test Folder 9'}] },
+                    { Id: "03305159691", type: 'pdf', name: 'Pdf Sample uno', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "20295259650", history: [{Id: '0', name: 'Home'}, {Id: '20295259650', name: 'Test Folder 9'}] },
                 ]},
-                { Id: "10145259659", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample.pdf", root: "0" },
-                { Id: "20055259652", type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29, root: "0"  , files: [
-                    { Id: "30315535417", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20055259652" },
-                    { Id: "40305250610", type: 'txt', name: 'Test Text file otto', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20055259652" },
-                    { Id: "01014159667", type: 'image', name: 'Test Image ocho', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample.jpg", root: "20055259652" },
+                { Id: "10145259659", type: 'pdf', name: 'Fin Stat 2015', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample.pdf", root: "0", history: [{Id: '0', name: 'Home'}] },
+                { Id: "20055259652", type: 'folder', name: 'Test Folder 8', updated: 'David Anita', size: 29, root: "0", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}]  , files: [
+                    { Id: "30315535417", type: 'txt', name: 'Test Text file zero', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20055259652", history: [{Id: '0', name: 'Home'}, {Id: '20055259652', name: 'Test Folder 8'}] },
+                    { Id: "40305250610", type: 'txt', name: 'Test Text file otto', updated: 'Carlo Bacchi', size: 20, src: "http://localhost:3090/files/txt-sample.txt", root: "20055259652", history: [{Id: '0', name: 'Home'}, {Id: '20055259652', name: 'Test Folder 8'}] },
+                    { Id: "01014159667", type: 'image', name: 'Test Image ocho', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample.jpg", root: "20055259652", history: [{Id: '0', name: 'Home'}, {Id: '20055259652', name: 'Test Folder 8'}] },
                 ]},
-                { Id: "90905259656", type: 'image', name: 'Test Image 2', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-2.jpg", root: "0" },
-                { Id: "108252596528", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "0" },
-                { Id: "19805256954", type: 'image', name: 'Test Image 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-3.jpg", root: "0" },
-                { Id: "19805244415", type: 'image', name: 'Test Image 4', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-4.jpg", root: "0" },
+                { Id: "90905259656", type: 'image', name: 'Test Image 2', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-2.jpg", root: "0", history: [{Id: '0', name: 'Home'}] },
+                { Id: "108252596528", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "0", history: [{Id: '0', name: 'Home'} ] },
+                { Id: "19805256954", type: 'image', name: 'Test Image 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-3.jpg", root: "0", history: [{Id: '0', name: 'Home'} ] },
+                { Id: "19805244415", type: 'image', name: 'Test Image 4', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-4.jpg", root: "0" , history: [{Id: '0', name: 'Home'}] },
             ]
         }
 

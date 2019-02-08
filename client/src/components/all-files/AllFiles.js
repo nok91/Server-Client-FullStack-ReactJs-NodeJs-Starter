@@ -58,6 +58,7 @@ class AllFiles extends Component {
 
     render() {
         const { table_data, filesViewer } = this.state;
+
         return (
             <Fragment>
                 {
@@ -65,7 +66,7 @@ class AllFiles extends Component {
                         <Grid container spacing={24}>
                             <Grid item xs={2}></Grid>
                             <Grid item xs={8}>
-                                <FilesTable {...this.props} table_data={table_data.files} getFileHandler={(props) => this.getFileHandler(props)} />
+                                <FilesTable {...this.props} table_data={table_data} getFileHandler={(props) => this.getFileHandler(props)} />
                             </Grid>
                             <Grid item xs={2}></Grid>
                         </Grid>

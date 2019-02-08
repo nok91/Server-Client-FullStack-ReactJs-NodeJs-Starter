@@ -5,8 +5,33 @@ import FilesTableHeader from './FilesTableHeader';
 import _listIcon from '../../media/icons/fl-list-header-actions-list.svg';
 import _gridIcon from '../../media/icons/fl-list-header-actions-grid.svg';
 
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Link from '@material-ui/core/Link';
+import HomeIcon from '@material-ui/icons/Home';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import GrainIcon from '@material-ui/icons/Grain';
+
 import './FilesTable.css'
 import FilesTableGrid from './FilesTableGrid';
+
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const styles = theme => ({
+    root: {
+      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+    },
+    link: {
+      display: 'flex',
+    },
+    icon: {
+      marginRight: theme.spacing.unit / 2,
+      width: 20,
+      height: 20,
+    },
+});
 
 class FilesTable extends Component {
     state = {
@@ -23,6 +48,8 @@ class FilesTable extends Component {
             { title: 'Size', _className: 'fl-item-size' },
         ],
     }
+
+    
 
     onClick_filter_handler = (index) => {
         const { table_data, filter_active_id, filter_data, filter_is_asc} = this.state;
@@ -105,12 +132,54 @@ class FilesTable extends Component {
         return exist;
     }
 
+
     render() {
         const { active_row_id, is_view_list, sliderValue } = this.state;
-        const { table_data, getFileHandler} = this.props;
+        const { table_data, getFileHandler, classes} = this.props;
+
+        var root =  this.props.match.path.replace("/:id","");
+        
+        console.log("root ", root);
 
         return (
             <Fragment>
+
+
+                    <div style={{  margin: '20px 0px' }}>
+
+                        <Breadcrumbs arial-label="Breadcrumb">
+                            {
+                                table_data.history &&
+                                    table_data.history.map((el, index) => {
+                                        return  (
+                                            <Link href={`${root}/${el.Id}`} color="inherit" key={index}  className={classes.link}>
+                                                {index == 0 &&
+                                                    <HomeIcon className={classes.icon} />
+                                                }
+                                                {el.name}
+                                            </Link>
+                                        )
+                                    })
+                            }
+                        </Breadcrumbs>
+                       
+                    </div>
+
+                    {/* <Breadcrumbs arial-label="Breadcrumb">
+                        <Link href="#" color="inherit"   className={classes.link}>
+                            <HomeIcon className={classes.icon} />
+                            Material-UI
+                        </Link>
+                        <Link href="#" color="inherit"  className={classes.link}>
+                            <WhatshotIcon className={classes.icon} />
+                            Lab
+                        </Link>
+                        <Typography color="textPrimary" className={classes.link}>
+                            <GrainIcon className={classes.icon} />
+                                Breadcrumb
+                        </Typography>
+                    </Breadcrumbs> */}
+
                     <div className="files-filters-header">
                         <FilesTableHeader {...this.state}  handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue}> 
                             <div className="fl-list-header-actions">
@@ -123,7 +192,7 @@ class FilesTable extends Component {
                     {
                         is_view_list ?
                             <ol className="file_list" >
-                                {table_data.map((row, index) => {
+                                {table_data.files.map((row, index) => {
                                     return (
                                         <FilesTableRow {...row} {...this.props} key={index} row={row} is_active={active_row_id === row.Id} selectedRows={this.checkIfSelected(row.Id)} onClick_handler={(e) => this.onClick_handler(row.Id, e)} getFileHandler={(props) => getFileHandler(props)}/>
                                     );
@@ -131,7 +200,7 @@ class FilesTable extends Component {
                             </ol>
                         :
                             <div className={`grid-view-content grid-size-${sliderValue + 1} `}>
-                                <FilesTableGrid {...this.props} data={table_data} is_active={active_row_id} arraySelectsRow={this.state.arraySelectsRow} checkIfSelected={(_id) => this.checkIfSelected(_id)} onClick_handler={(_index, e) => this.onClick_handler(_index, e)} />
+                                <FilesTableGrid {...this.props} data={table_data.files} is_active={active_row_id} arraySelectsRow={this.state.arraySelectsRow} checkIfSelected={(_id) => this.checkIfSelected(_id)} onClick_handler={(_index, e) => this.onClick_handler(_index, e)} />
                             </div>
                     }
                
@@ -140,5 +209,7 @@ class FilesTable extends Component {
     }
 }
 
-
-export default (FilesTable);
+FilesTable.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+export default withStyles(styles)(FilesTable);
