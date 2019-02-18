@@ -3,6 +3,7 @@ import folder_icon from '../../media/icons/folder-icon.svg';
 import file_image_icon from '../../media/icons/file-image-icon.svg';
 import file_txt_icon from '../../media/icons/file-txt-icon.svg';
 import file_pdf_icon from '../../media/icons/file-pdf-icon.svg';
+import video_player_icon from '../../media/icons/video-player-icon.svg';
 // import file_loader from '../../media/icons/file-loader.svg'
 // import Button from '@material-ui/core/Button';
 import FilesDropDown from './FilesDropDown';
@@ -22,6 +23,9 @@ class FilesTableRow extends Component {
                 break;
             case 'pdf':
                 icon = file_pdf_icon;
+                break;
+            case 'video':
+                icon = video_player_icon;
                 break;
             default:
                 icon = folder_icon;

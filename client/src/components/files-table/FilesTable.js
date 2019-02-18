@@ -42,6 +42,7 @@ class FilesTable extends Component {
         sliderValue: 2,
         filter_active_id: -1,
         filter_is_asc: true,
+        table_data: {},
         filter_data: [
             { title: 'Name',  _className: 'fl-item-name' },
             { title: 'Updated', _className: 'fl-item-updated' },
@@ -49,28 +50,38 @@ class FilesTable extends Component {
         ],
     }
 
-    
+    componentWillMount () {
+
+        this.setState({
+            table_data: this.props.table_data
+        })
+    }
+
 
     onClick_filter_handler = (index) => {
-        const { table_data, filter_active_id, filter_data, filter_is_asc} = this.state;
+        const {table_data, filter_active_id, filter_data, filter_is_asc} = this.state;
 
-        if (filter_active_id === index) {
-            this.setState({
-                filter_is_asc: !filter_is_asc,
-                table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), !filter_is_asc)
-            })
-        }else {
-            if (filter_data[index] !== undefined) {
+        if(table_data.files != undefined) {
+            if (filter_active_id == index) {
                 this.setState({
-                    filter_active_id: index,
-                    filter_is_asc: true,
-                    table_data: this.dynamicSort_helper([...table_data], filter_data[index].title.toLowerCase(), true)
-                });
+                    filter_is_asc: !filter_is_asc,
+                    table_data: {...this.state.table_data, ...{files: this.dynamicSort_helper([...this.state.table_data.files], filter_data[index].title.toLowerCase(), !filter_is_asc)}}
+                })
+            }else {
+                if (filter_data[index] !== undefined) {
+                    this.setState({
+                        filter_active_id: index,
+                        filter_is_asc: true,
+                        table_data: {...this.state.table_data, ...{files: this.dynamicSort_helper([...this.state.table_data.files], filter_data[index].title.toLowerCase(), true)}}
+                    });
+                }
             }
         }
+
     }
   
     onClick_handler = (index, e ) => {
+        console.log(e.ctrlKey)
         if (e.ctrlKey) {
             if (this.state.arraySelectsRow.includes(index)) {
                 this.setState({
@@ -92,7 +103,6 @@ class FilesTable extends Component {
         this.setState({
             active_row_id: index,
         })
-        
     }
 
     onClick_ChangeView = (_val) =>{
@@ -132,14 +142,13 @@ class FilesTable extends Component {
         return exist;
     }
 
-
     render() {
-        const { active_row_id, is_view_list, sliderValue } = this.state;
-        const { table_data, getFileHandler, classes} = this.props;
+        const { table_data, active_row_id, is_view_list, sliderValue } = this.state;
+        const { getFileHandler, classes} = this.props;
 
         var root =  this.props.match.path.replace("/:id","");
         
-        console.log("root ", root);
+        console.log("root ", table_data);
 
         return (
             <Fragment>
@@ -181,7 +190,7 @@ class FilesTable extends Component {
                     </Breadcrumbs> */}
 
                     <div className="files-filters-header">
-                        <FilesTableHeader {...this.state}  handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue}> 
+                        <FilesTableHeader {...this.state}  handleChangeSlider={this.handleChangeSlider} sliderValue={sliderValue} onClick_filter_handler={(index) => this.onClick_filter_handler(index)}>  
                             <div className="fl-list-header-actions">
                                 <img className={`fl-list-header-actions-icon ${is_view_list ? 'active' : ''}`} src={_listIcon} alt="list view" onClick={() => this.onClick_ChangeView(true)} />
                                 <img className={`fl-list-header-actions-icon ${!is_view_list ? 'active' : ''}`} src={_gridIcon} alt="grid view" onClick={() => this.onClick_ChangeView(false)} />

@@ -29,7 +29,7 @@ class FilesTableHeader extends Component {
     };
 
     render() {
-        const { children, filter_active_id, filter_is_asc, onClick_handler, filter_data, is_view_list, sliderValue, handleChangeSlider} = this.props;
+        const { children, filter_active_id, filter_is_asc, onClick_filter_handler, filter_data, is_view_list, sliderValue, handleChangeSlider} = this.props;
         // const { value } = this.state;
 
         return (
@@ -44,7 +44,7 @@ class FilesTableHeader extends Component {
 
                                 {filter_data.map((item, index, arr) => {
                                     return (
-                                        <FilesTableHeaderFilter {...item} isActive={filter_active_id === index} filter_is_asc={filter_is_asc} key={index} onClickHandler={() => onClick_handler(index)} isLastChild={(arr.length - 1 === index)} />
+                                        <FilesTableHeaderFilter {...item} isActive={filter_active_id === index} filter_is_asc={filter_is_asc} key={index} onClickHandler={() => onClick_filter_handler(index)} isLastChild={(arr.length - 1 === index)} />
                                     );
                                 })}
                             </div>

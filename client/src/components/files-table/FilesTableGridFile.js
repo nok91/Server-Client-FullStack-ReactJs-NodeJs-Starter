@@ -4,6 +4,7 @@ import FilesDropDown from './FilesDropDown';
 //import folder_icon from '../../media/icons/folder-icon.svg';
 import file_txt_icon from '../../media/icons/file-txt-icon.svg';
 import file_pdf_icon from '../../media/icons/file-pdf-icon.svg';
+import video_player_icon from '../../media/icons/video-player-icon.svg';
 class FilesTableGridFile extends Component {
 
     state = {
@@ -19,6 +20,8 @@ class FilesTableGridFile extends Component {
     renderFiles = (_el) => {
         var file = "";
 
+        console.log("HALOOAA ", _el.type)
+
         switch (_el.type) {
             case 'image':
                 file = <div className="grid-view-item-thumbnail-image" style={{ backgroundImage: `url(${_el.src})` }}></div>;
@@ -28,6 +31,9 @@ class FilesTableGridFile extends Component {
                 break;
             case 'pdf':
                 file = <img className="grid-view-item-info-file-icon" src={file_pdf_icon} width="32" height="32" alt="logo pdf file" />;
+                break;
+            case 'video':
+                file = <img className="grid-view-item-info-file-icon" src={video_player_icon} width="32" height="32" alt="logo pdf file" />;
                 break;
             default:
                 file = <div className="grid-view-item-thumbnail-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)` }}></div>;

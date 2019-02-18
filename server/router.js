@@ -61,6 +61,7 @@ module.exports = function (app) {
             size: 10,
             history: [{Id: '0', name: 'Home'}],
             files: [
+                { Id: "90905144419", type: 'video', name: 'MYGA-OUTRO-E3', updated: 'Mo Nokri', size: 29, src: "http://localhost:3090/files/MYGA-OUTRO-E3.mp4", root: "0" , history: [{Id: '0', name: 'Home'}] },
                 { Id: "380652543720", type: 'folder', name: 'Test Folder 2', updated: 'Bianca Neve', size: 2, root: "0", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}], files: [
                     { Id: "90345259699", type: 'pdf', name: 'Pdf Sample 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-3.pdf", root: "380652543720", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}] },
                     { Id: "450652543761", type: 'folder', name: 'Test Folder z', updated: 'Bianca Neve', size: 2, root: "380652543720", history: [{Id: '0', name: 'Home'}, {Id: '380652543720', name: 'Test Folder 2'}, {Id: '450652543761', name: 'Test Folder z'}] , files: [
@@ -91,6 +92,7 @@ module.exports = function (app) {
                 { Id: "108252596528", type: 'pdf', name: 'Fin-Stat 2011', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/pdf-sample-2.pdf", root: "0", history: [{Id: '0', name: 'Home'} ] },
                 { Id: "19805256954", type: 'image', name: 'Test Image 3', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-3.jpg", root: "0", history: [{Id: '0', name: 'Home'} ] },
                 { Id: "19805244415", type: 'image', name: 'Test Image 4', updated: 'David Anita', size: 29, src: "http://localhost:3090/files/image-sample-4.jpg", root: "0" , history: [{Id: '0', name: 'Home'}] },
+                { Id: "04805244419", type: 'video', name: 'MYGA-INTRO-E2-(BOUNCING)_1', updated: 'Mo Nokri', size: 29, src: "http://localhost:3090/files/MYGA-INTRO-E2-(BOUNCING)_1.mp4", root: "0" , history: [{Id: '0', name: 'Home'}] },
             ]
         }
 

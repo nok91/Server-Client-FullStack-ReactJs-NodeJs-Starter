@@ -9,6 +9,7 @@ import "./FilesViewer.css"
 import FilesViewerPdf from './FilesViewerPdf';
 import FilesViewerTxt from './FilesViewerTxt';
 import FilesViewerImg from './FilesViewerImg';
+import FilesViewerVideos from './FilesViewerVideos';
 
 class FilesViewer extends Component {
 
@@ -25,6 +26,8 @@ class FilesViewer extends Component {
                 break;
             case 'image' :
                     return <FilesViewerImg  {...this.props}  />
+            case 'video' :
+                    return <FilesViewerVideos  {...this.props}  />
             default: 
                     return "HERE IS A FILE"
                 break;
